@@ -7,7 +7,7 @@ const logo = props => {
     //in production mode, this paths does not existis, cause webpack will create only the source folder
     const logPath = '../../assets/images/burger_logo.png'; 
     return(
-        <div className={classes.Logo}>
+        <div className={classes.Logo} style={{height: props.height}}>
             <img src={burgerLogo} alt='MyBurger'/>
         </div>
     );
