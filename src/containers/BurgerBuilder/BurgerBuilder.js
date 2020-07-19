@@ -10,7 +10,6 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-orders';
 
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions/burgerBuilder'
 import actions from '../../store/actions/burgerBuilder'
 
 class BurgerBuilder extends Component {
@@ -19,21 +18,13 @@ class BurgerBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        purchasable: false,
         purchasing: false,
-        loading: false,
-        error: false
+        loading: false
     }
 
     componentDidMount () {
         // console.log(this.props);
-        // axios.get( '/ingredients.json' )
-        //     .then( response => {
-        //         this.setState( { ingredients: response.data } );
-        //     } )
-        //     .catch( error => {
-        //         this.setState( { error: true } );
-        //     } );
+        this.props.fecthIngredients()
     }
 
     updatePurchaseState () {
@@ -79,7 +70,7 @@ class BurgerBuilder extends Component {
             disabledInfo[key] = disabledInfo[key] <= 0
         }
         let orderSummary = null;
-        let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
+        let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
 
         if ( this.props.ingredients ) {
             burger = (
@@ -118,14 +109,16 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
     return {
         ingredients : state.ingredients,
-        totalPrice : state.totalPrice
+        totalPrice : state.totalPrice,
+        error: state.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         addIngredient: (name) => dispatch(actions.addIngredient(name)),
-        removeIngredient: (name) => dispatch(actions.removeIngredient(name))
+        removeIngredient: (name) => dispatch(actions.removeIngredient(name)),
+        fecthIngredients: () => dispatch(actions.fecthIngredients())
 
     }
 }
