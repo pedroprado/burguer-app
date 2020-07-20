@@ -20,17 +20,17 @@ class Checkout extends Component {
         return (
         <div>
             {this.props.ingredients? 
-            <div>
-                <CheckoutSummary
-                ingredients={this.props.ingredients}
-                checkoutCancelled={this.checkoutCancelledHandler}
-                checkoutContinued={this.checkoutContinuedHandler} />
-                <Route 
-                path={this.props.match.path + '/contact-data'} 
-                component={ContactData}/>
-            </div> : <Redirect to='/'/>
+                <div>
+                    <CheckoutSummary
+                    ingredients={this.props.ingredients}
+                    checkoutCancelled={this.checkoutCancelledHandler}
+                    checkoutContinued={this.checkoutContinuedHandler} />
+                    <Route 
+                    path={this.props.match.path + '/contact-data'} 
+                    component={ContactData}/>
+                </div> : 
+                <Redirect to='/'/>
             }
-         
         </div>
               
         );
