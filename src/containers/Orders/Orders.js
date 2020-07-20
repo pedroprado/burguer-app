@@ -15,9 +15,9 @@ class Orders extends Component {
     }
 
     render () {
-        let output = <Spinner />;
+        let orders = <Spinner />;
         if(!this.props.loading){
-            output = <div>
+            orders = <div>
                 {this.props.orders.map(order => (
                 <Order 
                     key={order.id}
@@ -29,7 +29,7 @@ class Orders extends Component {
 
         return (
             <div>
-               {output}
+               {orders}
             </div>
         );
     }
