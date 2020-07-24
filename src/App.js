@@ -6,7 +6,7 @@ import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
 
-class App extends Component {
+class App extends Component {W
   render () {
     return (
       <div>
